@@ -1,0 +1,64 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+            attributeFormDefault="unqualified" xml:lang="nb">
+    <xsd:complexType name="Innsender">
+        <xsd:sequence>
+            <xsd:element name="navn" type="Tekst" nillable="true" minOccurs="0"/>
+            <xsd:element name="bostedsadresse" type="Adresse" nillable="true" minOccurs="0"/>
+            <xsd:element name="postadresse" type="Adresse" nillable="true" minOccurs="0"/>
+            <xsd:element name="epost" type="EPost" nillable="true" minOccurs="0"/>
+            <xsd:element name="foedselsnr" type="Foedselsnummer" nillable="true" minOccurs="0"/>
+            <xsd:element name="telefonnr" type="Telefonnummer" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Adresse">
+        <xsd:sequence>
+            <xsd:element name="adresse1" type="Tekst" nillable="true" minOccurs="0"/>
+            <xsd:element name="postnummer" type="Postnummer" nillable="true" minOccurs="0"/>
+            <xsd:element name="poststed" type="Poststed" nillable="true" minOccurs="0"/>
+            <xsd:element name="adresse2" type="Tekst" nillable="true" minOccurs="0"/>
+            <xsd:element name="land" type="Tekst" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="InnsenderOrg">
+        <xsd:sequence>
+            <xsd:element name="kontaktperson" type="Tekst" nillable="true" minOccurs="0"/>
+            <xsd:element name="organisasjonsnavn" type="Tekst" nillable="true" minOccurs="0"/>
+            <xsd:element name="organisasjonsnummer" type="Organisasjonsnummer" nillable="true" minOccurs="0"/>
+            <xsd:element name="postadresse" type="Adresse" nillable="true" minOccurs="0"/>
+            <xsd:element name="forretningsadresse" type="Adresse" nillable="true" minOccurs="0"/>
+            <xsd:element name="epost" type="EPost" nillable="true" minOccurs="0"/>
+            <xsd:element name="telefonnr" type="Telefonnummer" nillable="true" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="Tekst">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Postnummer">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Poststed">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="EPost">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Foedselsnummer">
+        <xsd:restriction base="Foedselsnummer_RestriksjonFoedselsnummer"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Foedselsnummer_RestriksjonFoedselsnummer">
+        <xsd:restriction base="xsd:token">
+            <xsd:pattern value="[0-9]{11}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Telefonnummer">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Organisasjonsnummer">
+        <xsd:restriction base="Organisasjonsnummer_RestriksjonOrganisasjonsnummer"/>
+    </xsd:simpleType>
+    <xsd:simpleType name="Organisasjonsnummer_RestriksjonOrganisasjonsnummer">
+        <xsd:restriction base="xsd:token">
+            <xsd:pattern value="[0-9]{9}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
